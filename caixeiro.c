@@ -35,15 +35,26 @@ void cidadeMaisProxima(int Ncidades, int distancias[Ncidades][Ncidades]){
         caminho[passo] = atualCidade;
         distanciaTotal += menorDistancia;
     }
-
-
+    int soma_teste = 0;
+    //teste para verificar se todas as cidades foram verificadas
+    for(int i = 0; i < Ncidades; i++)
+    {
+        soma_teste += cidadesVisitadas[i];
+    }
+    printf("Cidades visitadas %i\n",soma_teste);
     // Imprime o caminho e a distância total
     printf("Caminho: ");
-    for (int i = 0; i < Ncidades; i++) {
+    for (int i = 0,cont = 0; i < Ncidades; i++,cont++) {
         printf("%d ", caminho[i]);
+        if(cont == 45)
+        {
+            //quebra de linha a cada 54 numeros para melhor vizibilidade no terminal
+            printf("\n");
+            cont = 0;
+        }
     }
     printf("%i",cidade_natal);//Volta diretamente para a cidade Natal
-    distanciaTotal += distancias[atualCidade][caminho[0]];//soma a distancia entre a cidade final e a cidade natal
+    distanciaTotal += distancias[atualCidade][cidade_natal];//soma a distancia entre a cidade final e a cidade natal
     printf("\nDistancia total: %d\n", distanciaTotal);
 }
 
@@ -53,11 +64,11 @@ int main() {
     printf("Número de cidades: ");
     scanf("%d", &Ncidades);
     int formato_matriz;
-    printf("digite 0 para diagonal inferior e 1 para diagonal superior");
+    printf("digite 0 para diagonal inferior e 1 para diagonal superior: ");
     scanf("%i",&formato_matriz);
     int distancias[Ncidades][Ncidades];
     int lixo;
-    printf("Enter the distance matrix:\n");
+    printf("Escreva a matriz de distancia:\n");
     if(formato_matriz == 1){ 
         for (int i = 0; i < Ncidades - 1 ; i++){
             scanf("%i",&lixo);
