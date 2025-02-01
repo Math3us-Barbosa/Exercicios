@@ -79,8 +79,7 @@ int main() {
         }
     }
     else if (formato_matriz == 0){
-        scanf("%i",&lixo);
-        for (int i = 1; i < Ncidades; i++){
+        for (int i = 0; i < Ncidades; i++){
             for (int j = 0; j < i; j++){
                 scanf("%d", &distancias[i][j]);
                 distancias[j][i] = distancias[i][j];
