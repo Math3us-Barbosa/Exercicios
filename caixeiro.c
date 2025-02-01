@@ -69,22 +69,23 @@ int main() {
     int distancias[Ncidades][Ncidades];
     int lixo;
     printf("Escreva a matriz de distancia:\n");
-    if(formato_matriz == 1){ 
+    
+    if(formato_matriz == 1){//se diagonal superior 
         for (int i = 0; i < Ncidades - 1 ; i++){
-            scanf("%i",&lixo);
+            scanf("%i",&lixo); //scaneando 0 da diagonal principal.
             for (int j = i+1; j < Ncidades; j++){
                 scanf("%d", &distancias[i][j]);
-                distancias[j][i] = distancias[i][j];
+                distancias[j][i] = distancias[i][j];//completando a matriz, a parte superior e inferior ficarão iguais
             }
         }
     }
-    else if (formato_matriz == 0){
+    else if (formato_matriz == 0){//se diagonal inferior
         for (int i = 0; i < Ncidades; i++){
             for (int j = 0; j < i; j++){
                 scanf("%d", &distancias[i][j]);
-                distancias[j][i] = distancias[i][j];
+                distancias[j][i] = distancias[i][j];//completando a matriz, a parte superior e inferior ficarão iguais
             }
-            scanf("%i",&lixo);
+            scanf("%i",&lixo);//scaneando 0 da diagonal principal
         }
     }
     else
